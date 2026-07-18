@@ -1,13 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Boxes, Package, Truck, Check } from "lucide-react";
 
-import serviceFreightAsset from "@/assets/service-freight.jpg.asset.json";
-import serviceCourierAsset from "@/assets/service-courier.jpg.asset.json";
-import serviceMovingAsset from "@/assets/service-moving.jpg.asset.json";
-
-const serviceFreight = serviceFreightAsset.url;
-const serviceCourier = serviceCourierAsset.url;
-const serviceMoving = serviceMovingAsset.url;
+import serviceFreight from "@/assets/service-freight.jpg";
+import serviceCourier from "@/assets/service-courier.jpg";
+import serviceMoving from "@/assets/service-moving.jpg";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/services")({
