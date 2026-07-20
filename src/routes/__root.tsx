@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { I18nProvider, LanguageSwitch, useT } from "../lib/i18n";
+import logoUrl from "../assets/logo.png";
 
 function NotFoundComponent() {
   return (
@@ -101,6 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/logo.png", type: "image/png", sizes: "48x48" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -154,8 +156,8 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-        <Link to="/" className="group flex items-center gap-2">
-          <span className="font-display text-xl text-foreground">Amaechison</span>
+        <Link to="/" className="group flex items-center">
+          <img src={logoUrl} alt="Amaechison" className="h-12 w-auto" />
         </Link>
         <nav className="hidden items-center gap-10 md:flex">
           <Link to="/" className={linkCls} activeProps={{ className: activeCls }} activeOptions={{ exact: true }}>{t("nav.home")}</Link>
@@ -184,8 +186,8 @@ function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2">
-              <span className="font-display text-xl">Amaechison</span>
+            <div className="flex items-center">
+              <img src={logoUrl} alt="Amaechison" className="h-12 w-auto" />
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">{t("footer.tagline")}</p>
           </div>
