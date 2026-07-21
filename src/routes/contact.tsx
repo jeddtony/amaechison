@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { Mail, MapPin, Phone, Check, ArrowUpRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
+import { sendEnquiry } from "@/lib/send-enquiry";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -30,10 +31,10 @@ function buildSchema(t: (k: string) => string) {
 
 function ContactPage() {
   const t = useT();
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const raw = {
@@ -55,8 +56,14 @@ function ContactPage() {
       return;
     }
     setErrors({});
-    setStatus("sent");
-    e.currentTarget.reset();
+    setStatus("sending");
+    try {
+      await sendEnquiry({ data: result.data });
+      setStatus("sent");
+      e.currentTarget.reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -111,15 +118,19 @@ function ContactPage() {
               <div className="flex flex-wrap items-center gap-6 pt-4">
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-3 bg-gold px-6 py-4 text-xs uppercase tracking-[0.22em] text-primary-foreground transition-all hover:bg-gold-soft"
+                  disabled={status === "sending"}
+                  className="group inline-flex items-center gap-3 bg-gold px-6 py-4 text-xs uppercase tracking-[0.22em] text-primary-foreground transition-all hover:bg-gold-soft disabled:opacity-60"
                 >
-                  {t("contact.send")}
+                  {status === "sending" ? t("contact.sending") : t("contact.send")}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
                 {status === "sent" && (
                   <p className="inline-flex items-center gap-2 text-sm text-gold">
                     <Check className="h-4 w-4" /> {t("contact.sent")}
                   </p>
+                )}
+                {status === "error" && (
+                  <p className="text-sm text-destructive">{t("contact.error")}</p>
                 )}
               </div>
             </form>
