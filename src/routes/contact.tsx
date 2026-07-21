@@ -57,10 +57,11 @@ function ContactPage() {
     }
     setErrors({});
     setStatus("sending");
+    const form = e.currentTarget;
     try {
       await sendEnquiry({ data: result.data });
       setStatus("sent");
-      e.currentTarget.reset();
+      form.reset();
     } catch {
       setStatus("error");
     }

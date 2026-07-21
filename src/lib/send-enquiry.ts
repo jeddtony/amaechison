@@ -24,7 +24,7 @@ export const sendEnquiry = createServerFn({ method: "POST" })
       other: "Other",
     };
 
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: "Amaechison Contact Form <noreply@amaechison.se>",
       to: "hej@amaechison.se",
       replyTo: data.email,
@@ -41,6 +41,11 @@ export const sendEnquiry = createServerFn({ method: "POST" })
         <p>${data.message.replace(/\n/g, "<br>")}</p>
       `,
     });
+
+    if (result.error) {
+      console.error("[send-enquiry] Resend error:", result.error);
+      throw new Error(result.error.message);
+    }
 
     return { ok: true };
   });
