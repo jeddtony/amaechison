@@ -11,11 +11,17 @@ const schema = z.object({
   dropoff: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(1).max(2000),
   serviceDate: z.string().optional(),
+  website: z.string().optional(),
 });
 
 export const sendEnquiry = createServerFn({ method: "POST" })
   .validator(schema)
   .handler(async ({ data }) => {
+    // Silently succeed if the honeypot field is filled — it's a bot
+    if (data.website) {
+      return { ok: true };
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const serviceLabel: Record<string, string> = {

@@ -35,6 +35,7 @@ function buildSchema(t: (k: string) => string) {
     dropoff: z.string().trim().max(200).optional().or(z.literal("")),
     message: z.string().trim().min(1, t("contact.err.message")).max(2000),
     serviceDate: z.string().optional(),
+    website: z.string().optional(),
   });
 }
 
@@ -57,6 +58,7 @@ function ContactPage() {
       dropoff: String(fd.get("dropoff") ?? ""),
       message: String(fd.get("message") ?? ""),
       serviceDate: serviceDate ? serviceDate.toISOString() : undefined,
+      website: String(fd.get("website") ?? ""),
     };
     const result = buildSchema(t).safeParse(raw);
     if (!result.success) {
@@ -91,6 +93,11 @@ function ContactPage() {
         <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr] lg:gap-20">
           <div>
             <form onSubmit={handleSubmit} noValidate className="space-y-6">
+              {/* honeypot — bots fill this, humans never see it */}
+              <div className="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
               <div className="grid gap-6 md:grid-cols-2">
                 <Field label={t("contact.f.name")} name="name" error={errors.name} required />
                 <Field label={t("contact.f.email")} name="email" type="email" error={errors.email} required />
