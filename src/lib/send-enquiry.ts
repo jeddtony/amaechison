@@ -10,6 +10,7 @@ const schema = z.object({
   pickup: z.string().trim().max(200).optional().or(z.literal("")),
   dropoff: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(1).max(2000),
+  serviceDate: z.string().optional(),
 });
 
 export const sendEnquiry = createServerFn({ method: "POST" })
@@ -36,6 +37,7 @@ export const sendEnquiry = createServerFn({ method: "POST" })
         <p><strong>Service:</strong> ${serviceLabel[data.service]}</p>
         ${data.pickup ? `<p><strong>Pickup:</strong> ${data.pickup}</p>` : ""}
         ${data.dropoff ? `<p><strong>Drop-off:</strong> ${data.dropoff}</p>` : ""}
+        ${data.serviceDate ? `<p><strong>Preferred date:</strong> ${new Date(data.serviceDate).toLocaleDateString("en-SE", { day: "numeric", month: "long", year: "numeric" })}</p>` : ""}
         <hr />
         <p><strong>Message:</strong></p>
         <p>${data.message.replace(/\n/g, "<br>")}</p>

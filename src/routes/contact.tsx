@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
-import { Mail, MapPin, Phone, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Phone, CheckCircle2, ArrowUpRight, CalendarIcon } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { sendEnquiry } from "@/lib/send-enquiry";
 import {
@@ -10,6 +10,8 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -32,6 +34,7 @@ function buildSchema(t: (k: string) => string) {
     pickup: z.string().trim().max(200).optional().or(z.literal("")),
     dropoff: z.string().trim().max(200).optional().or(z.literal("")),
     message: z.string().trim().min(1, t("contact.err.message")).max(2000),
+    serviceDate: z.string().optional(),
   });
 }
 
@@ -39,6 +42,8 @@ function ContactPage() {
   const t = useT();
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serviceDate, setServiceDate] = useState<Date | undefined>(undefined);
+  const [dateOpen, setDateOpen] = useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -51,6 +56,7 @@ function ContactPage() {
       pickup: String(fd.get("pickup") ?? ""),
       dropoff: String(fd.get("dropoff") ?? ""),
       message: String(fd.get("message") ?? ""),
+      serviceDate: serviceDate ? serviceDate.toISOString() : undefined,
     };
     const result = buildSchema(t).safeParse(raw);
     if (!result.success) {
@@ -108,6 +114,37 @@ function ContactPage() {
               <div className="grid gap-6 md:grid-cols-2">
                 <Field label={t("contact.f.pickup")} name="pickup" error={errors.pickup} />
                 <Field label={t("contact.f.dropoff")} name="dropoff" error={errors.dropoff} />
+              </div>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    {t("contact.f.date")}
+                  </label>
+                  <Popover open={dateOpen} onOpenChange={setDateOpen}>
+                    <PopoverTrigger asChild>
+                      <button
+                        type="button"
+                        className="flex items-center justify-between border-b border-border bg-transparent py-3 text-left text-foreground outline-none transition-colors hover:border-gold focus:border-gold"
+                      >
+                        <span className={serviceDate ? "text-foreground" : "text-muted-foreground/60"}>
+                          {serviceDate
+                            ? serviceDate.toLocaleDateString("sv-SE", { day: "numeric", month: "long", year: "numeric" })
+                            : t("contact.f.datePh")}
+                        </span>
+                        <CalendarIcon className="h-4 w-4 text-muted-foreground" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={serviceDate}
+                        onSelect={(d) => { setServiceDate(d); setDateOpen(false); }}
+                        disabled={{ before: new Date() }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("contact.f.message")}</label>
