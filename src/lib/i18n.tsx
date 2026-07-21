@@ -1,4 +1,11 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 export type Lang = "sv" | "en";
 
@@ -342,22 +349,43 @@ export function useT() {
   return useI18n().t;
 }
 
+const LANGUAGES: { code: Lang; label: string; flag: string }[] = [
+  { code: "sv", label: "Svenska", flag: "🇸🇪" },
+  { code: "en", label: "English", flag: "🇬🇧" },
+];
+
 export function LanguageSwitch({ className = "" }: { className?: string }) {
   const { lang, setLang, t } = useI18n();
-  const other: Lang = lang === "sv" ? "en" : "sv";
+  const current = LANGUAGES.find((l) => l.code === lang)!;
+
   return (
-    <button
-      type="button"
-      onClick={() => setLang(other)}
-      aria-label={t("lang.switch")}
-      className={
-        "inline-flex items-center gap-1 text-xs uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-gold " +
-        className
-      }
-    >
-      <span className={lang === "sv" ? "text-gold" : ""}>SV</span>
-      <span aria-hidden className="opacity-40">/</span>
-      <span className={lang === "en" ? "text-gold" : ""}>EN</span>
-    </button>
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        aria-label={t("lang.switch")}
+        className={
+          "inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.22em] text-muted-foreground outline-none transition-colors hover:text-gold " +
+          className
+        }
+      >
+        <span className="text-base leading-none">{current.flag}</span>
+        <span>{current.code}</span>
+        <ChevronDown className="h-3 w-3 opacity-60" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[130px] border border-border/60 bg-background">
+        {LANGUAGES.map(({ code, label, flag }) => (
+          <DropdownMenuItem
+            key={code}
+            onClick={() => setLang(code)}
+            className={
+              "flex cursor-pointer items-center gap-2.5 px-3 py-2 text-xs uppercase tracking-[0.18em] " +
+              (lang === code ? "text-gold" : "text-muted-foreground hover:text-foreground")
+            }
+          >
+            <span className="text-base leading-none">{flag}</span>
+            {label}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
