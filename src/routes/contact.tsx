@@ -179,8 +179,8 @@ function ContactPage() {
               <p className="mt-3 text-sm text-muted-foreground">{t("contact.reach.desc")}</p>
             </div>
             <div className="space-y-6">
-              <ContactRow icon={Phone} label={t("contact.reach.phone")} value="+46 (0)8 000 00 00" />
-              <ContactRow icon={Mail} label={t("contact.reach.email")} value="hello@amaechison.se" />
+              <ContactRow icon={Phone} label={t("contact.reach.phone")} value="0735084946" />
+              <ContactRow icon={Mail} label={t("contact.reach.email")} value="hej@amaechison.se" />
               <ContactRow icon={MapPin} label={t("contact.reach.base")} value="Stockholm, Sverige" />
             </div>
             <div className="border-t border-border/60 pt-6">
