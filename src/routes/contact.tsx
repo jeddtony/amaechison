@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
-import { Mail, MapPin, Phone, Check, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Phone, CheckCircle2, ArrowUpRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
 import { sendEnquiry } from "@/lib/send-enquiry";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -57,11 +63,9 @@ function ContactPage() {
     }
     setErrors({});
     setStatus("sending");
-    const form = e.currentTarget;
     try {
       await sendEnquiry({ data: result.data });
       setStatus("sent");
-      form.reset();
     } catch {
       setStatus("error");
     }
@@ -125,11 +129,6 @@ function ContactPage() {
                   {status === "sending" ? t("contact.sending") : t("contact.send")}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
-                {status === "sent" && (
-                  <p className="inline-flex items-center gap-2 text-sm text-gold">
-                    <Check className="h-4 w-4" /> {t("contact.sent")}
-                  </p>
-                )}
                 {status === "error" && (
                   <p className="text-sm text-destructive">{t("contact.error")}</p>
                 )}
@@ -155,6 +154,26 @@ function ContactPage() {
           </aside>
         </div>
       </section>
+
+      <Dialog open={status === "sent"} onOpenChange={(open) => { if (!open) setStatus("idle"); }}>
+        <DialogContent className="max-w-md border border-border/60 bg-background p-10 text-center shadow-2xl">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center border border-gold/40 text-gold">
+            <CheckCircle2 className="h-8 w-8" />
+          </div>
+          <DialogTitle className="mt-6 font-display text-2xl text-foreground">
+            {t("contact.success.title")}
+          </DialogTitle>
+          <DialogDescription className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            {t("contact.success.desc")}
+          </DialogDescription>
+          <button
+            onClick={() => setStatus("idle")}
+            className="mx-auto mt-8 inline-flex items-center gap-2 border border-gold/70 px-6 py-3 text-xs uppercase tracking-[0.2em] text-gold transition-all hover:bg-gold hover:text-primary-foreground"
+          >
+            {t("contact.success.close")}
+          </button>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

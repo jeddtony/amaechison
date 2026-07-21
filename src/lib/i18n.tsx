@@ -148,6 +148,9 @@ const translations: Record<Lang, Dict> = {
     "contact.err.name": "Ange ditt namn",
     "contact.err.email": "Ange en giltig e-postadress",
     "contact.err.message": "Berätta lite om uppdraget",
+    "contact.success.title": "Tack för din förfrågan!",
+    "contact.success.desc": "Vi har tagit emot din förfrågan och återkommer med en fast offert — oftast samma dag.",
+    "contact.success.close": "Stäng",
   },
   en: {
     "nav.home": "Home",
@@ -281,6 +284,9 @@ const translations: Record<Lang, Dict> = {
     "contact.err.name": "Please enter your name",
     "contact.err.email": "Please enter a valid email",
     "contact.err.message": "Tell us a bit about the job",
+    "contact.success.title": "Thank you for your enquiry!",
+    "contact.success.desc": "We've received your request and will come back with a fixed quote — usually the same day.",
+    "contact.success.close": "Close",
   },
 };
 
