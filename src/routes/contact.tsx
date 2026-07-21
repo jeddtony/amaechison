@@ -181,7 +181,7 @@ function ContactPage() {
             <div className="space-y-6">
               <ContactRow icon={Phone} label={t("contact.reach.phone")} value="+46 735 084 946" href="tel:+46735084946" />
               <ContactRow icon={Mail} label={t("contact.reach.email")} value="hej@amaechison.se" href="mailto:hej@amaechison.se" />
-              <ContactRow icon={MapPin} label={t("contact.reach.base")} value="Stockholm, Sverige" />
+              <ContactRow icon={MapPin} label={t("contact.reach.base")} value="Förmansvägen 2, 151 47 Södertälje" />
             </div>
             <div className="border-t border-border/60 pt-6">
               <p className="text-[10px] uppercase tracking-[0.3em] text-gold">{t("contact.hours")}</p>
