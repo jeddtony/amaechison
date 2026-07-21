@@ -179,8 +179,8 @@ function ContactPage() {
               <p className="mt-3 text-sm text-muted-foreground">{t("contact.reach.desc")}</p>
             </div>
             <div className="space-y-6">
-              <ContactRow icon={Phone} label={t("contact.reach.phone")} value="0735084946" />
-              <ContactRow icon={Mail} label={t("contact.reach.email")} value="hej@amaechison.se" />
+              <ContactRow icon={Phone} label={t("contact.reach.phone")} value="+46 735 084 946" href="tel:+46735084946" />
+              <ContactRow icon={Mail} label={t("contact.reach.email")} value="hej@amaechison.se" href="mailto:hej@amaechison.se" />
               <ContactRow icon={MapPin} label={t("contact.reach.base")} value="Stockholm, Sverige" />
             </div>
             <div className="border-t border-border/60 pt-6">
@@ -232,15 +232,22 @@ function Field({
   );
 }
 
-function ContactRow({ icon: Icon, label, value }: { icon: typeof Mail; label: string; value: string }) {
+function ContactRow({ icon: Icon, label, value, href }: { icon: typeof Mail; label: string; value: string; href?: string }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="mt-1 flex h-9 w-9 flex-none items-center justify-center border border-gold/50 text-gold">
+      <a
+        href={href}
+        className="mt-1 flex h-9 w-9 flex-none items-center justify-center border border-gold/50 text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
+      >
         <Icon className="h-4 w-4" />
-      </div>
+      </a>
       <div>
         <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{label}</p>
-        <p className="mt-1 text-foreground">{value}</p>
+        {href ? (
+          <a href={href} className="mt-1 block text-foreground transition-colors hover:text-gold">{value}</a>
+        ) : (
+          <p className="mt-1 text-foreground">{value}</p>
+        )}
       </div>
     </div>
   );
