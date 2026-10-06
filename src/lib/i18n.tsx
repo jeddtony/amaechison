@@ -144,6 +144,7 @@ const translations: Record<Lang, Dict> = {
     "services.maintenance.b2": "Löpande skötsel och schemalagda besiktningar",
     "services.maintenance.b3": "Förbättringsprojekt, stora som små",
     "services.maintenance.b4": "Snabb service och gediget hantverk, varje gång",
+    "services.maintenance.b5": "Trappstädning och skötsel",
 
     // Property maintenance page
     "services.crossLink": "Letar du efter fastighetsunderhåll istället?",
@@ -317,6 +318,7 @@ const translations: Record<Lang, Dict> = {
     "services.maintenance.b2": "Routine upkeep and scheduled inspections",
     "services.maintenance.b3": "Property improvement projects, large and small",
     "services.maintenance.b4": "Prompt service and quality workmanship, every time",
+    "services.maintenance.b5": "Stairwell cleaning and maintenance",
 
     "propertyPage.who.title": "Who we help",
     "propertyPage.who.p1": "We work with homeowners, landlords, property managers and businesses — residential and commercial properties alike. Whether it's a single rental flat or a portfolio of commercial units, the same standard applies.",
