@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Truck, Package, Boxes } from "lucide-react";
+import { ArrowUpRight, Truck, Package, Boxes, Wrench, Check } from "lucide-react";
 
 import heroTruck from "@/assets/hero-truck.jpg";
 import serviceFreight from "@/assets/service-freight.jpg";
@@ -18,6 +18,7 @@ function Index() {
       <Marquee />
       <Services />
       <Promise />
+      <PropertyMaintenance />
       <CtaBanner />
     </>
   );
@@ -61,7 +62,13 @@ function Hero() {
               to="/services"
               className="inline-flex items-center gap-2 border border-border px-6 py-4 text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:border-gold hover:text-gold"
             >
-              {t("home.hero.explore")}
+              {t("home.hero.exploreLogistics")}
+            </Link>
+            <Link
+              to="/property-maintenance"
+              className="inline-flex items-center gap-2 border border-border px-6 py-4 text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:border-gold hover:text-gold"
+            >
+              {t("home.hero.explorePropertyMaintenance")}
             </Link>
           </div>
         </div>
@@ -158,6 +165,48 @@ function Promise() {
             <p className="mt-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">{p.label}</p>
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function PropertyMaintenance() {
+  const t = useT();
+  const bullets = [1, 2, 3, 4].map((n) => t(`services.maintenance.b${n}`));
+  return (
+    <section className="border-y border-border/60 bg-card/30">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2 lg:gap-20 lg:px-10 lg:py-32">
+        <div className="overflow-hidden">
+          <div className="flex aspect-[6/5] w-full flex-col items-center justify-center gap-3 border border-dashed border-border/60 bg-card/40 text-center">
+            <Wrench className="h-8 w-8 text-gold/60" />
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">Photo coming soon</p>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center">
+          <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] text-gold">
+            <Wrench className="h-4 w-4" />
+            {t("home.property.kicker")}
+          </div>
+          <h2 className="mt-6 text-4xl md:text-5xl">{t("home.property.title")}</h2>
+          <p className="mt-6 text-muted-foreground">{t("services.maintenance.lead")}</p>
+          <ul className="mt-8 space-y-3">
+            {bullets.map((b) => (
+              <li key={b} className="flex items-start gap-3 text-sm">
+                <Check className="mt-0.5 h-4 w-4 flex-none text-gold" />
+                <span className="text-foreground/90">{b}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10">
+            <Link
+              to="/property-maintenance"
+              className="group inline-flex items-center gap-3 border border-gold/70 px-6 py-4 text-xs uppercase tracking-[0.22em] text-gold transition-all hover:bg-gold hover:text-primary-foreground"
+            >
+              {t("home.property.cta")}
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

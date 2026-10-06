@@ -17,9 +17,9 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact & Quote Request — Amaechison" },
-      { name: "description", content: "Request a fixed quote for freight, courier or moving services in Stockholm and across Sweden. Same-day response." },
+      { name: "description", content: "Request a fixed quote for freight, courier, moving or property maintenance services in Stockholm and across Sweden. Same-day response." },
       { property: "og:title", content: "Contact Amaechison" },
-      { property: "og:description", content: "Request a quote for freight, courier or moving services." },
+      { property: "og:description", content: "Request a quote for freight, courier, moving or property maintenance services." },
     ],
   }),
   component: ContactPage,
@@ -30,7 +30,7 @@ function buildSchema(t: (k: string) => string) {
     name: z.string().trim().min(1, t("contact.err.name")).max(100),
     email: z.string().trim().email(t("contact.err.email")).max(255),
     phone: z.string().trim().max(40).optional().or(z.literal("")),
-    service: z.enum(["freight", "courier", "moving", "other"]),
+    service: z.enum(["freight", "courier", "moving", "maintenance", "other"]),
     pickup: z.string().trim().max(200).optional().or(z.literal("")),
     dropoff: z.string().trim().max(200).optional().or(z.literal("")),
     message: z.string().trim().min(1, t("contact.err.message")).max(2000),
@@ -53,7 +53,7 @@ function ContactPage() {
       name: String(fd.get("name") ?? ""),
       email: String(fd.get("email") ?? ""),
       phone: String(fd.get("phone") ?? ""),
-      service: String(fd.get("service") ?? "freight") as "freight" | "courier" | "moving" | "other",
+      service: String(fd.get("service") ?? "freight") as "freight" | "courier" | "moving" | "maintenance" | "other",
       pickup: String(fd.get("pickup") ?? ""),
       dropoff: String(fd.get("dropoff") ?? ""),
       message: String(fd.get("message") ?? ""),
@@ -114,6 +114,7 @@ function ContactPage() {
                     <option value="freight">{t("contact.f.freight")}</option>
                     <option value="courier">{t("contact.f.courier")}</option>
                     <option value="moving">{t("contact.f.moving")}</option>
+                    <option value="maintenance">{t("contact.f.maintenance")}</option>
                     <option value="other">{t("contact.f.other")}</option>
                   </select>
                 </div>

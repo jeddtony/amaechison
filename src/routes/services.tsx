@@ -89,6 +89,19 @@ function ServicesPage() {
           );
         })}
       </div>
+
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div className="flex flex-col items-start justify-between gap-6 border border-border/60 bg-card/30 p-8 sm:flex-row sm:items-center lg:p-10">
+          <p className="text-lg text-foreground/90">{t("services.crossLink")}</p>
+          <Link
+            to="/property-maintenance"
+            className="group inline-flex flex-none items-center gap-3 border border-gold/70 px-6 py-4 text-xs uppercase tracking-[0.22em] text-gold transition-all hover:bg-gold hover:text-primary-foreground"
+          >
+            {t("nav.propertyMaintenance")}
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

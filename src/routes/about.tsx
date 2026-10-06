@@ -1,13 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Wrench, ArrowUpRight } from "lucide-react";
+import serviceMaintenance from "@/assets/service-maintenance.jpeg";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Amaechison | Stockholm Transport" },
-      { name: "description", content: "Amaechison is a Stockholm-based transport company handling freight, courier and moving for private customers and businesses across Sweden." },
+      { title: "About — Amaechison | Stockholm Transport & Property Services" },
+      { name: "description", content: "Amaechison is a Stockholm-based service company handling freight, courier, moving and property maintenance for private customers and businesses across Sweden." },
       { property: "og:title", content: "About — Amaechison" },
-      { property: "og:description", content: "A Stockholm-based transport company built on precision, care and communication." },
+      { property: "og:description", content: "A Stockholm-based transport and property maintenance company built on precision, care and communication." },
     ],
   }),
   component: AboutPage,
@@ -75,6 +77,38 @@ function AboutPage() {
             >
               {t("about.getInTouch")}
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border/60">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-10 lg:py-28">
+          <div>
+            <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] text-gold">
+              <Wrench className="h-4 w-4" />
+              {t("about.property.kicker")}
+            </div>
+            <h2 className="mt-6 text-3xl md:text-4xl">{t("about.property.title")}</h2>
+            <p className="mt-6 text-muted-foreground leading-relaxed">{t("about.property.p1")}</p>
+            <div className="mt-10">
+              <Link
+                to="/property-maintenance"
+                className="group inline-flex items-center gap-3 border border-gold/70 px-6 py-4 text-xs uppercase tracking-[0.22em] text-gold transition-all hover:bg-gold hover:text-primary-foreground"
+              >
+                {t("about.property.cta")}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+          </div>
+          <div className="overflow-hidden">
+            <img
+              src={serviceMaintenance}
+              alt={t("about.property.title")}
+              loading="lazy"
+              width={1200}
+              height={1400}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>

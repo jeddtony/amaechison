@@ -16,15 +16,17 @@ const translations: Record<Lang, Dict> = {
     // Header / Footer
     "nav.home": "Hem",
     "nav.services": "Tjänster",
+    "nav.propertyMaintenance": "Fastighetsunderhåll",
     "nav.about": "Om oss",
     "nav.contact": "Kontakt",
     "cta.requestQuote": "Begär offert",
-    "footer.tagline": "Frakt-, bud- och flyttjänster levererade med nordisk precision. Vi betjänar Stockholm och hela Sverige.",
+    "footer.tagline": "Frakt-, bud-, flytt- och fastighetsunderhållstjänster levererade med nordisk precision. Vi betjänar Stockholm och hela Sverige.",
     "footer.services": "Tjänster",
     "footer.company": "Företag",
     "footer.freight": "Frakt",
     "footer.courier": "Bud",
     "footer.moving": "Flytt",
+    "footer.maintenance": "Fastighetsunderhåll",
     "footer.about": "Om oss",
     "footer.contact": "Kontakt",
     "footer.getQuote": "Få en offert",
@@ -44,11 +46,12 @@ const translations: Record<Lang, Dict> = {
 
     // Home / Hero
     "home.hero.kicker": "Stockholm · Hela Sverige",
-    "home.hero.title1": "Flyttat med",
+    "home.hero.title1": "Hanterat med",
     "home.hero.title2": "precision.",
-    "home.hero.title3": "Levererat i tid.",
-    "home.hero.lead": "Frakt-, bud- och flyttjänster för privatpersoner och företag. Från ett enskilt paket över stan till fulla lass över hela landet — vi hanterar det med den omsorg dina varor förtjänar.",
-    "home.hero.explore": "Utforska tjänster",
+    "home.hero.title3": "Varje gång.",
+    "home.hero.lead": "Frakt-, bud- och flyttjänster — samt pålitligt fastighetsunderhåll och reparationer — för privatpersoner, hyresvärdar och företag i hela Sverige. Oavsett vad som ska flyttas eller skötas om hanterar vi det med samma standard.",
+    "home.hero.exploreLogistics": "Frakttjänster",
+    "home.hero.explorePropertyMaintenance": "Fastighetsunderhåll",
 
     // Home / Marquee
     "home.marquee.nationwide": "Hela landet",
@@ -73,9 +76,14 @@ const translations: Record<Lang, Dict> = {
     "home.promise.nationwide": "Rikstäckande",
     "home.promise.customers": "Företag & privat",
 
+    // Home / Property maintenance
+    "home.property.kicker": "Det här gör vi också",
+    "home.property.title": "Fastighetsunderhåll, gjort ordentligt.",
+    "home.property.cta": "Utforska fastighetsunderhåll",
+
     // Home / CTA
     "home.cta.kicker": "Redo när du är",
-    "home.cta.title": "Berätta vad som behöver flyttas.",
+    "home.cta.title": "Berätta vad som behöver göras.",
     "home.cta.desc": "Skicka detaljerna så återkommer vi med en tydlig, fast offert — oftast samma dag.",
 
     // About
@@ -97,6 +105,12 @@ const translations: Record<Lang, Dict> = {
     "about.principles.3.t": "Riktig kommunikation",
     "about.principles.3.d": "En riktig person att nå. Live-uppdateringar när det behövs. Bekräftelse när det landar.",
     "about.getInTouch": "Ta kontakt",
+
+    // About / Property maintenance
+    "about.property.kicker": "Fastighetsunderhåll",
+    "about.property.title": "Vi tar också hand om fastigheter.",
+    "about.property.p1": "Vid sidan av vår logistikverksamhet driver vi en dedikerad tjänst för fastighetsunderhåll — allmänna reparationer, löpande skötsel, besiktningar och förbättringsprojekt för husägare, hyresvärdar, fastighetsförvaltare och företag. Samma pålitlighet, samma standard.",
+    "about.property.cta": "Utforska fastighetsunderhåll",
 
     // Services page
     "services.kicker": "Tjänster",
@@ -123,6 +137,27 @@ const translations: Record<Lang, Dict> = {
     "services.moving.b2": "Varsam hantering av möbler och ömtåligt",
     "services.moving.b3": "Packmaterial och hjälp",
     "services.moving.b4": "Montering, placering och städning",
+    "services.maintenance.kicker": "Fastighetsunderhåll",
+    "services.maintenance.title": "Fastighetsunderhåll & reparationer",
+    "services.maintenance.lead": "Pålitligt underhåll för husägare, hyresvärdar, fastighetsförvaltare och företag — vi håller bostäder och kommersiella fastigheter i utmärkt skick.",
+    "services.maintenance.b1": "Allmänna reparationer och vardagliga fixar",
+    "services.maintenance.b2": "Löpande skötsel och schemalagda besiktningar",
+    "services.maintenance.b3": "Förbättringsprojekt, stora som små",
+    "services.maintenance.b4": "Snabb service och gediget hantverk, varje gång",
+
+    // Property maintenance page
+    "services.crossLink": "Letar du efter fastighetsunderhåll istället?",
+    "propertyPage.who.title": "Vilka vi hjälper",
+    "propertyPage.who.p1": "Vi arbetar med husägare, hyresvärdar, fastighetsförvaltare och företag — bostäder såväl som kommersiella fastigheter. Oavsett om det är en enda hyreslägenhet eller en hel portfölj av kommersiella enheter gäller samma standard.",
+    "propertyPage.office.kicker": "För företag",
+    "propertyPage.office.title": "Kontorsinredning & planlösning.",
+    "propertyPage.office.lead": "Ska ni göra om kontoret? Vi hjälper företag att planera om och möblera sin arbetsyta på nytt — från planlösning och möblering till en fullständig ombyggnad av kontorsytan — så att kontoret fungerar för hur teamet faktiskt arbetar idag.",
+    "propertyPage.office.b1": "Planlösning och layoutdesign för kontor",
+    "propertyPage.office.b2": "Ommöblering, montering och placering av möbler",
+    "propertyPage.office.b3": "Anpassning för nya team, aktivitetsbaserat arbete eller mötesrum",
+    "propertyPage.office.b4": "Arbete planerat kring er verksamhets öppettider, minimal störning",
+    "propertyPage.included.title": "Det här ingår",
+    "propertyPage.crossLink": "Behöver du frakt, bud eller flytt istället?",
 
     // Contact
     "contact.kicker": "Kontakt",
@@ -141,6 +176,7 @@ const translations: Record<Lang, Dict> = {
     "contact.f.freight": "Frakt",
     "contact.f.courier": "Bud",
     "contact.f.moving": "Flytt",
+    "contact.f.maintenance": "Fastighetsunderhåll",
     "contact.f.other": "Annat",
     "contact.send": "Skicka förfrågan",
     "contact.sending": "Skickar...",
@@ -164,15 +200,17 @@ const translations: Record<Lang, Dict> = {
   en: {
     "nav.home": "Home",
     "nav.services": "Services",
+    "nav.propertyMaintenance": "Property Maintenance",
     "nav.about": "About",
     "nav.contact": "Contact",
     "cta.requestQuote": "Request quote",
-    "footer.tagline": "Freight, courier and moving services delivered with Nordic precision. Serving Stockholm and all of Sweden.",
+    "footer.tagline": "Freight, courier, moving and property maintenance services delivered with Nordic precision. Serving Stockholm and all of Sweden.",
     "footer.services": "Services",
     "footer.company": "Company",
     "footer.freight": "Freight",
     "footer.courier": "Courier",
     "footer.moving": "Moving",
+    "footer.maintenance": "Property Maintenance",
     "footer.about": "About",
     "footer.contact": "Contact",
     "footer.getQuote": "Get a quote",
@@ -189,11 +227,12 @@ const translations: Record<Lang, Dict> = {
     "err.tryAgain": "Try again",
 
     "home.hero.kicker": "Stockholm · Nationwide Sweden",
-    "home.hero.title1": "Moved with",
+    "home.hero.title1": "Handled with",
     "home.hero.title2": "precision.",
-    "home.hero.title3": "Delivered on time.",
-    "home.hero.lead": "Freight, courier and moving services for private customers and businesses. From a single parcel across town to full loads across the country — we handle it with the care your goods deserve.",
-    "home.hero.explore": "Explore services",
+    "home.hero.title3": "Every time.",
+    "home.hero.lead": "Freight, courier and moving services — and reliable property maintenance and repairs — for private customers, landlords and businesses across Sweden. Whatever needs moving or maintaining, we handle it to the same standard.",
+    "home.hero.exploreLogistics": "Logistics services",
+    "home.hero.explorePropertyMaintenance": "Property maintenance",
 
     "home.marquee.nationwide": "Nationwide",
     "home.marquee.sameDay": "Same-day",
@@ -215,8 +254,12 @@ const translations: Record<Lang, Dict> = {
     "home.promise.nationwide": "Nationwide coverage",
     "home.promise.customers": "Businesses & private",
 
+    "home.property.kicker": "What we also do",
+    "home.property.title": "Property maintenance, done properly.",
+    "home.property.cta": "Explore property maintenance",
+
     "home.cta.kicker": "Ready when you are",
-    "home.cta.title": "Tell us what needs moving.",
+    "home.cta.title": "Tell us what needs doing.",
     "home.cta.desc": "Send us the details and we'll return with a clear, fixed quote — usually the same day.",
 
     "about.kicker": "About",
@@ -237,6 +280,11 @@ const translations: Record<Lang, Dict> = {
     "about.principles.3.t": "Real communication",
     "about.principles.3.d": "A real person you can reach. Live updates when it matters. Confirmation when it lands.",
     "about.getInTouch": "Get in touch",
+
+    "about.property.kicker": "Property Maintenance",
+    "about.property.title": "We also take care of properties.",
+    "about.property.p1": "Alongside our logistics work, we run a dedicated property maintenance service — general repairs, routine upkeep, inspections and improvement projects for homeowners, landlords, property managers and businesses. Same reliability, same standard of care.",
+    "about.property.cta": "Explore property maintenance",
 
     "services.kicker": "Services",
     "services.title": "Built for what needs to arrive.",
@@ -262,6 +310,27 @@ const translations: Record<Lang, Dict> = {
     "services.moving.b2": "Careful handling of furniture and fragiles",
     "services.moving.b3": "Packing materials and assistance",
     "services.moving.b4": "Assembly, placement and clean-up",
+    "services.maintenance.kicker": "Property Maintenance",
+    "services.maintenance.title": "Property Maintenance & Repairs",
+    "services.maintenance.lead": "Reliable maintenance for homeowners, landlords, property managers and businesses — keeping residential and commercial properties in excellent condition.",
+    "services.maintenance.b1": "General repairs and everyday fixes",
+    "services.maintenance.b2": "Routine upkeep and scheduled inspections",
+    "services.maintenance.b3": "Property improvement projects, large and small",
+    "services.maintenance.b4": "Prompt service and quality workmanship, every time",
+
+    "propertyPage.who.title": "Who we help",
+    "propertyPage.who.p1": "We work with homeowners, landlords, property managers and businesses — residential and commercial properties alike. Whether it's a single rental flat or a portfolio of commercial units, the same standard applies.",
+    "propertyPage.office.kicker": "For Businesses",
+    "propertyPage.office.title": "Office layout & space planning.",
+    "propertyPage.office.lead": "Reconfiguring your office? We help businesses redesign and rearrange their workspace — from furniture layout and space planning to full office reconfigurations — so your office works for how your team actually works today.",
+    "propertyPage.office.b1": "Space planning and layout design for offices",
+    "propertyPage.office.b2": "Furniture rearrangement, assembly and placement",
+    "propertyPage.office.b3": "Reconfiguration for new teams, hot-desking or meeting rooms",
+    "propertyPage.office.b4": "Work scheduled around your business hours, minimal disruption",
+    "propertyPage.included.title": "What's included",
+    "propertyPage.crossLink": "Need freight, courier or moving instead?",
+
+    "services.crossLink": "Looking for property maintenance instead?",
 
     "contact.kicker": "Contact",
     "contact.title": "Let's get it moving.",
@@ -279,6 +348,7 @@ const translations: Record<Lang, Dict> = {
     "contact.f.freight": "Freight",
     "contact.f.courier": "Courier",
     "contact.f.moving": "Moving",
+    "contact.f.maintenance": "Property Maintenance",
     "contact.f.other": "Other",
     "contact.send": "Send request",
     "contact.sending": "Sending...",

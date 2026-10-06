@@ -6,7 +6,7 @@ const schema = z.object({
   name: z.string().trim().min(1).max(100),
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
-  service: z.enum(["freight", "courier", "moving", "other"]),
+  service: z.enum(["freight", "courier", "moving", "maintenance", "other"]),
   pickup: z.string().trim().max(200).optional().or(z.literal("")),
   dropoff: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(1).max(2000),
@@ -28,6 +28,7 @@ export const sendEnquiry = createServerFn({ method: "POST" })
       freight: "Freight",
       courier: "Courier",
       moving: "Moving",
+      maintenance: "Property Maintenance",
       other: "Other",
     };
 

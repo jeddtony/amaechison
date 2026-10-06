@@ -88,11 +88,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Amaechison — Freight, Courier & Moving in Stockholm" },
-      { name: "description", content: "Premium freight, courier and moving services across Stockholm and nationwide Sweden. Reliable transport for private customers and businesses." },
+      { title: "Amaechison — Freight, Courier, Moving & Property Maintenance in Stockholm" },
+      { name: "description", content: "Premium freight, courier, moving and property maintenance services across Stockholm and nationwide Sweden. Reliable service for private customers and businesses." },
       { name: "author", content: "Amaechison" },
-      { property: "og:title", content: "Amaechison — Freight, Courier & Moving" },
-      { property: "og:description", content: "Premium freight, courier and moving services across Stockholm and nationwide Sweden." },
+      { property: "og:title", content: "Amaechison — Freight, Courier, Moving & Property Maintenance" },
+      { property: "og:description", content: "Premium freight, courier, moving and property maintenance services across Stockholm and nationwide Sweden." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -162,6 +162,7 @@ function SiteHeader() {
         <nav className="hidden items-center gap-10 md:flex">
           <Link to="/" className={linkCls} activeProps={{ className: activeCls }} activeOptions={{ exact: true }}>{t("nav.home")}</Link>
           <Link to="/services" className={linkCls} activeProps={{ className: activeCls }}>{t("nav.services")}</Link>
+          <Link to="/property-maintenance" className={linkCls} activeProps={{ className: activeCls }}>{t("nav.propertyMaintenance")}</Link>
           <Link to="/about" className={linkCls} activeProps={{ className: activeCls }}>{t("nav.about")}</Link>
           <Link to="/contact" className={linkCls} activeProps={{ className: activeCls }}>{t("nav.contact")}</Link>
         </nav>
@@ -197,6 +198,7 @@ function SiteFooter() {
               <li><Link to="/services" className="hover:text-foreground">{t("footer.freight")}</Link></li>
               <li><Link to="/services" className="hover:text-foreground">{t("footer.courier")}</Link></li>
               <li><Link to="/services" className="hover:text-foreground">{t("footer.moving")}</Link></li>
+              <li><Link to="/property-maintenance" className="hover:text-foreground">{t("footer.maintenance")}</Link></li>
             </ul>
           </div>
           <div>
