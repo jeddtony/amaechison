@@ -18,7 +18,7 @@ export const Route = createFileRoute("/property-maintenance")({
 
 function PropertyMaintenancePage() {
   const t = useT();
-  const bullets = [1, 2, 3, 4, 5].map((n) => t(`services.maintenance.b${n}`));
+  const bullets = [5, 1, 2, 3, 4].map((n) => t(`services.maintenance.b${n}`));
   const officeBullets = [1, 2, 3, 4].map((n) => t(`propertyPage.office.b${n}`));
 
   return (
